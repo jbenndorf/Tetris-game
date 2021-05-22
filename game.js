@@ -1,39 +1,36 @@
-let start;
-
+let step = 1;
+let cube = document.getElementsByClassName('cube')[0];
+let arrowRight = document.getElementsByClassName('arrow-right')[0];
+let arrowLeft = document.getElementsByClassName('arrow-left')[0];
+let game = document.getElementsByClassName('rectangle')[0];
 
 function startGame(){
-   let cube = document.getElementsByClassName('cube')[0];
-   let arrowRight = document.getElementsByClassName('arrow-right')[0];
-   let arrowLeft = document.getElementsByClassName('arrow-left')[0];
-   let step = 1;
-
    cube.style.opacity = '1';
-   arrowRight.addEventListener('click', function() {
-   for (let i = 0; i < 10; i++) {
-        cube.style.transform = 'translateX(' + step * 20 + 'px)';
-   }
-    step++;
-    });
-    arrowLeft.addEventListener('click', function() {
-        for (let i = 0; i < 10; i++) {
-            cube.style.transform = 'translateX(' + step * -20 + 'px)';
-        }
-        step++;
-    });
+   arrowLeft.addEventListener('click', evt => move('left'));
+   arrowRight.addEventListener('click', evt => move('right'));
    //window.requestAnimationFrame(descend);
+}
+function move (direction){
+    let cubeDimensions = cube.getBoundingClientRect();
+    let gameDimensions = game.getBoundingClientRect();
+
+    if (direction === 'left' && cubeDimensions.x > gameDimensions.x){
+        step --;
+        cube.style.transform = 'translateX('+step * 20 +'px)';
+    } else if (direction === 'right' && (cubeDimensions.x + cubeDimensions.width) < (gameDimensions.x + gameDimensions.width))  {
+        step ++;
+        cube.style.transform = 'translateX('+step * 20 +'px)';
+    } else {
+        return;
+    }
 }
 
 function descend(timestamp) {
-    let cube = document.getElementsByClassName('cube')[0];
+    ypos = ypos + 5;
+    cube.style.transform = `translateY(${ypos}px)`;
+    console.log(cube.getBoundingClientRect());
 
-    if (start === undefined)
-        start = timestamp;
-    const elapsed = timestamp - start;
-
-    // `Math.min()` is used here to make sure that the element stops at exactly 200px.
-    cube.style.transform = 'translateY(' + Math.min(0.1 * elapsed, 500) + 'px)';
-
-    if (elapsed < 4000) { // Stop the animation after 2 seconds
-        window.requestAnimationFrame(descend);
-    }
+    //if(){
+    //    requestAnimationFrame(descend);
+    //}
 }
