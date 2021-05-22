@@ -34,8 +34,74 @@ html, body {
 }
 
 .controls {
+    display: flex;
     width: 10%;
     margin: 1% auto;
+}
+
+.directions {
+    display: flex;
+    width: 10%;
+    margin: 1% auto;
+}
+
+.start, .reset {
+    margin: 3%;
+    width: 100px;
+    height: 50px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    font-family: "Russo One", serif ;
+}
+
+.start::before, .reset::before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(10px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.start:active, .reset:active {
+    color: black;
+}
+
+.start:active::after, .reset:active::after {
+    background: transparent;
+}
+
+.start:hover::before, .reset:hover::before {
+    filter: blur(3px);
+}
+
+.start::after, .reset::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
 
 .cube {
@@ -45,4 +111,21 @@ html, body {
     opacity: 0;
     margin: auto;
     position: relative;
+}
+.arrow-left, .arrow-right {
+    width: 0;
+    height: 0;
+    border-bottom: 40px solid transparent;
+    border-top: 40px solid transparent;
+    margin: 0 auto;
+}
+
+.arrow-left {
+    border-right: 40px solid black;
+    margin-right: 10%;
+}
+
+.arrow-right {
+    border-left: 40px solid black;
+    margin-left: 10%;
 }
