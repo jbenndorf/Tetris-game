@@ -34,3 +34,7 @@ function descend(timestamp) {
     //    requestAnimationFrame(descend);
     //}
 }
+
+function reset(){
+    document.location.href='';
+}
