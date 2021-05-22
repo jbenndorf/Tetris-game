@@ -50,9 +50,7 @@ html, body {
     width: 100px;
     height: 50px;
     border: none;
-    outline: none;
     color: white;
-    background: black;
     cursor: pointer;
     position: relative;
     z-index: 0;
@@ -60,7 +58,7 @@ html, body {
     font-family: "Russo One", serif ;
 }
 
-.start:before, .reset:before {
+.start::before, .reset::before {
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -68,28 +66,27 @@ html, body {
     left:-2px;
     background-size: 400%;
     z-index: -1;
-    filter: blur(5px);
+    filter: blur(10px);
     width: calc(100% + 4px);
     height: calc(100% + 4px);
     animation: glowing 20s linear infinite;
-    opacity: 0;
     transition: opacity .3s ease-in-out;
     border-radius: 10px;
 }
 
 .start:active, .reset:active {
-    color: white;
+    color: black;
 }
 
-.start:active:after, .reset:active:after {
+.start:active::after, .reset:active::after {
     background: transparent;
 }
 
-.start:hover:before, .reset:hover:before {
-    opacity: 1;
+.start:hover::before, .reset:hover::before {
+    filter: blur(3px);
 }
 
-.start:after, .reset:after {
+.start::after, .reset::after {
     z-index: -1;
     content: '';
     position: absolute;
@@ -115,4 +112,20 @@ html, body {
     margin: auto;
     position: relative;
 }
+.arrow-left, .arrow-right {
+    width: 0;
+    height: 0;
+    border-bottom: 40px solid transparent;
+    border-top: 40px solid transparent;
+    margin: 0 auto;
+}
 
+.arrow-left {
+    border-right: 40px solid black;
+    margin-right: 10%;
+}
+
+.arrow-right {
+    border-left: 40px solid black;
+    margin-left: 10%;
+}
