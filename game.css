@@ -25,15 +25,16 @@ html, body {
 
 }
 
-.rectangle {
+.gameWindow {
     background-color: aliceblue;
     height: 500px;
     width: 30%;
     border: thick solid grey;
     margin: 0 auto;
+    overflow: hidden;
 }
 
-.controls {
+.settings {
     display: flex;
     width: 10%;
     margin: 1% auto;
