@@ -3,11 +3,13 @@ let cube = document.getElementsByClassName('cube')[0];
 let arrowRight = document.getElementsByClassName('arrow-right')[0];
 let arrowLeft = document.getElementsByClassName('arrow-left')[0];
 let gameWindow = document.getElementsByClassName('gameWindow')[0];
+let moveLeft = () => move('left');
+let moveRight = () => move('right');
 
 function startGame(){
    cube.style.opacity = '1';
-   arrowLeft.addEventListener('click', evt => move('left'));
-   arrowRight.addEventListener('click', evt => move('right'));
+   arrowLeft.addEventListener('click', moveLeft);
+   arrowRight.addEventListener('click', moveRight);
    //window.requestAnimationFrame(descend);
 }
 function move (direction){
@@ -36,5 +38,9 @@ function descend(timestamp) {
 }
 
 function reset(){
-    document.location.href='';
+    arrowLeft.removeEventListener('click', moveLeft);
+    arrowRight.removeEventListener('click', moveRight);
+    cube.style.opacity = '0';
+    cube.style.transform = 'translate(0,0)';
+    step = 1;
 }
