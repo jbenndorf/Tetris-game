@@ -2,7 +2,7 @@ let step = 1;
 let cube = document.getElementsByClassName('cube')[0];
 let arrowRight = document.getElementsByClassName('arrow-right')[0];
 let arrowLeft = document.getElementsByClassName('arrow-left')[0];
-let gameWindow = document.getElementsByClassName('gameWindow')[0];
+let playField = document.getElementsByClassName('playfield')[0];
 let moveLeft = () => move('left');
 let moveRight = () => move('right');
 
@@ -13,13 +13,13 @@ function startGame(){
    //window.requestAnimationFrame(descend);
 }
 function move (direction){
-    let cubeDimensions = cube.getBoundingClientRect();
-    let gameWindowDimensions = gameWindow.getBoundingClientRect();
+    let cubeDims = cube.getBoundingClientRect();
+    let playFieldDims = playField.getBoundingClientRect();
 
-    if (direction === 'left' && cubeDimensions.x > gameWindowDimensions.x){
+    if (direction === 'left' && cubeDims.x > playFieldDims.x){
         step --;
         cube.style.transform = 'translateX('+step * 20 +'px)';
-    } else if (direction === 'right' && (cubeDimensions.x + cubeDimensions.width) < (gameWindowDimensions.x + gameWindowDimensions.width))  {
+    } else if (direction === 'right' && (cubeDims.x + cubeDims.width) < (playFieldDims.x + playFieldDims.width))  {
         step ++;
         cube.style.transform = 'translateX('+step * 20 +'px)';
     } else {

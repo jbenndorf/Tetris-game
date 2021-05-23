@@ -25,7 +25,7 @@ html, body {
 
 }
 
-.gameWindow {
+.playfield {
     height: 70vh;
     width: 50vh;
     background-color: black;
