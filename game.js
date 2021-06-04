@@ -1,16 +1,23 @@
 let step = 1;
-let cube = document.getElementsByClassName('cube')[0];
-let arrowRight = document.getElementsByClassName('arrow-right')[0];
-let arrowLeft = document.getElementsByClassName('arrow-left')[0];
-let playField = document.getElementsByClassName('playfield')[0];
-let moveLeft = () => move('left');
-let moveRight = () => move('right');
+let yDescend = 0;
+const cube = document.getElementsByClassName('cube')[0];
+const arrowRight = document.getElementsByClassName('arrow-right')[0];
+const arrowLeft = document.getElementsByClassName('arrow-left')[0];
+const playField = document.getElementsByClassName('playfield')[0];
+const moveLeft = () => move('left');
+const moveRight = () => move('right');
+let animationId = null;
+
+let arrayHeight = 20;
+let arrayWidth = 12;
+let playFieldArray = [...Array(arrayHeight)].map(() => Array(arrayWidth).fill(0));
+let basicTetromino = [[1,0], [0,1], [1,1], [2,1]];
 
 function startGame(){
    cube.style.opacity = '1';
    arrowLeft.addEventListener('click', moveLeft);
    arrowRight.addEventListener('click', moveRight);
-   //window.requestAnimationFrame(descend);
+   animationId = window.requestAnimationFrame(descend);
 }
 function move (direction){
     let cubeDims = cube.getBoundingClientRect();
@@ -27,20 +34,22 @@ function move (direction){
     }
 }
 
-function descend(timestamp) {
-    ypos = ypos + 5;
-    cube.style.transform = `translateY(${ypos}px)`;
-    console.log(cube.getBoundingClientRect());
+function descend() {
+    console.log('we are moving down');
+    yDescend = yDescend + 1;
+    cube.style.transform = `translateY(${yDescend}px)`;
 
-    //if(){
-    //    requestAnimationFrame(descend);
-    //}
+    if(yDescend < 40){
+        animationId = requestAnimationFrame(descend);
+    }
 }
 
 function reset(){
     arrowLeft.removeEventListener('click', moveLeft);
     arrowRight.removeEventListener('click', moveRight);
+    window.cancelAnimationFrame(animationId);
     cube.style.opacity = '0';
     cube.style.transform = 'translate(0,0)';
     step = 1;
+    yDescend = 0;
 }
