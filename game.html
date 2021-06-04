@@ -12,9 +12,13 @@
             <header>
                 <h1 class="title">Welcome to Space Tetris</h1>
             </header>
-            <div class="playfield">
+            <canvas
+                    id="game-canvas"
+                    width="300"
+                    height="600"
+            >
                 <div class="cube"></div>
-            </div>
+            </canvas>
         </div>
         <div class="settings">
             <button class="start" onclick="startGame()">Start</button>

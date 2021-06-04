@@ -1,14 +1,61 @@
-let step = 1;
-let yDescend = 0;
-const cube = document.getElementsByClassName('cube')[0];
 const arrowRight = document.getElementsByClassName('arrow-right')[0];
 const arrowLeft = document.getElementsByClassName('arrow-left')[0];
-const playField = document.getElementsByClassName('playfield')[0];
 const moveLeft = () => move('left');
 const moveRight = () => move('right');
 let animationId = null;
 
-let arrayHeight = 20;
-let arrayWidth = 12;
-let playFieldArray = [...Array(arrayHeight)].map(() => Array(arrayWidth).fill(0));
-let basicTetromino = [[1,0], [0,1], [1,1], [2,1]];
+const ROWS = 20;
+const COLS = 10;
+const AWARDED_POINTS = 10;
+
+const SHAPES = [
+    [],
+    [
+        [0,0,0,0],
+        [1,1,1,1],
+        [0,0,0,0],
+        [0,0,0,0]
+    ],
+
+    [
+        [2,0,0],
+        [2,2,2],
+        [0,0,0]
+    ],
+
+    [
+        [0,0,3],
+        [3,3,3],
+        [0,0,0]
+    ],
+    [
+        [4,4],
+        [4,4],
+    ],
+    [
+        [0,5,5],
+        [5,5,0],
+        [0,0,0],
+    ],
+    [
+        [0,6,0],
+        [6,6,6],
+        [0,0,0]
+    ],
+    [
+        [7,7,0],
+        [0,7,7],
+        [0,0,0]
+    ],
+]
+
+const COLORS = [
+    '#000000',
+    '#0000FF',
+    '#FF0000',
+    '#00FF00',
+    '#00FFFF',
+    '#FFFFFF',
+    '#FFFF00',
+    '#FF00FF',
+]
