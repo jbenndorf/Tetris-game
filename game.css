@@ -25,14 +25,11 @@ html, body {
 
 }
 
-.playfield {
-    height: 70vh;
-    width: 50vh;
+#game-canvas {
     background-color: black;
     border: thick solid floralwhite;
     border-radius: 1%;
     margin: 0 auto;
-    overflow: hidden;
 }
 
 .settings {
@@ -106,14 +103,6 @@ html, body {
     100% { background-position: 0 0; }
 }
 
-.cube {
-    background-color: yellow;
-    height: 30px;
-    width: 30px;
-    opacity: 0;
-    margin: auto;
-    position: relative;
-}
 .arrow-left, .arrow-right {
     width: 0;
     height: 0;

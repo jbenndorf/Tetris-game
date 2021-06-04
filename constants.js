@@ -1,11 +1,9 @@
 const arrowRight = document.getElementsByClassName('arrow-right')[0];
 const arrowLeft = document.getElementsByClassName('arrow-left')[0];
-const moveLeft = () => move('left');
-const moveRight = () => move('right');
-let animationId = null;
 
 const ROWS = 20;
 const COLS = 10;
+const BLOCK_SIZE = 40;
 const AWARDED_POINTS = 10;
 
 const SHAPES = [
